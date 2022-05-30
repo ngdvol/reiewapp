@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import logo from "./logo.svg";
 //import './App.css';
 //import "@aws-amplify/ui-react/styles.css";
-import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "font-awesome/css/font-awesome.min.css";
+import { Rating } from "react-simple-star-rating";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
@@ -109,14 +111,36 @@ function App() {
                     <Card className="mb-4">
                       <Card.Header as="h5">Add new review</Card.Header>
                       <Card body>
-                        <Card.Subtitle className="mb-2 text-muted">
-                          Add review on your item
-                        </Card.Subtitle>
-                        <Form className="row g-3 col-md-12 mt-2">
+                        <Form className="row g-3 col-md-12">
+                          <Card>
+                            <Row>
+                              <Col xs="auto">
+                                <Image src="https://www.sony.com.sg/image/21519f325ed91cd52c6c67651c907e1d?fmt=pjpeg&wid=165&bgcolor=FFFFFF&bgc=FFFFFF" />
+                              </Col>
+                              <Col>
+                                <Card.Body>
+                                  <Card.Title>E 50mm F1.8 OSS</Card.Title>
+                                  <Card.Text>SEL50F18</Card.Text>
+                                </Card.Body>
+                              </Col>
+                            </Row>
+                          </Card>
+                          <Form.Group>
+                            <Row>
+                              <Col xs="auto">
+                                <Form.Label>Rating</Form.Label>
+                              </Col>
+                              <Col>
+                                <Rating ratingValue={3} allowHalfIcon={true} />
+                              </Col>
+                            </Row>
+                          </Form.Group>
                           <Form.Group>
                             <Form.Label>Item review</Form.Label>
                             <Form.Control
                               type="text"
+                              as="textarea"
+                              rows={4}
                               placeholder="Item name"
                               onChange={(e) =>
                                 setFormData({

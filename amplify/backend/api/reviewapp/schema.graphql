@@ -3,7 +3,7 @@
 input AMPLIFY {
   globalAuthRule: AuthRule = { allow: public }
 } # FOR TESTING ONLY!
-type Review @model {
+type Review @model @searchable {
   id: ID!
   name: String!
   content: String!
