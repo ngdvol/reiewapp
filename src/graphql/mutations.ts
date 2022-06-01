@@ -9,11 +9,11 @@ export const createReview = /* GraphQL */ `
   ) {
     createReview(input: $input, condition: $condition) {
       id
-      name
-      content
-      productRating
       userID
+      description
+      productRating
       reviewRating
+      productReview
       createdAt
       updatedAt
     }
@@ -26,11 +26,11 @@ export const updateReview = /* GraphQL */ `
   ) {
     updateReview(input: $input, condition: $condition) {
       id
-      name
-      content
-      productRating
       userID
+      description
+      productRating
       reviewRating
+      productReview
       createdAt
       updatedAt
     }
@@ -43,11 +43,11 @@ export const deleteReview = /* GraphQL */ `
   ) {
     deleteReview(input: $input, condition: $condition) {
       id
-      name
-      content
-      productRating
       userID
+      description
+      productRating
       reviewRating
+      productReview
       createdAt
       updatedAt
     }

@@ -5,9 +5,9 @@ input AMPLIFY {
 } # FOR TESTING ONLY!
 type Review @model @searchable {
   id: ID!
-  name: String!
-  content: String!
-  productRating: Float!
   userID: String!
+  description: String!
+  productRating: Float!
   reviewRating: Float!
+  productReview: String!
 }

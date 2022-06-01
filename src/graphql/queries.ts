@@ -21,11 +21,11 @@ export const searchReviews = /* GraphQL */ `
     ) {
       items {
         id
-        name
-        content
-        productRating
         userID
+        description
+        productRating
         reviewRating
+        productReview
         createdAt
         updatedAt
       }
@@ -52,11 +52,11 @@ export const getReview = /* GraphQL */ `
   query GetReview($id: ID!) {
     getReview(id: $id) {
       id
-      name
-      content
-      productRating
       userID
+      description
+      productRating
       reviewRating
+      productReview
       createdAt
       updatedAt
     }
@@ -71,11 +71,11 @@ export const listReviews = /* GraphQL */ `
     listReviews(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        name
-        content
-        productRating
         userID
+        description
+        productRating
         reviewRating
+        productReview
         createdAt
         updatedAt
       }
