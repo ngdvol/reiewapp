@@ -18,7 +18,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 // import "./scss/custom.scss";
-// import { Authenticator } from "@aws-amplify/ui-react";
+// import { Auathenticator } from "@aws-amplify/ui-react";
 import Amplify, { API, graphqlOperation } from "aws-amplify";
 import { listReviews } from "./graphql/queries";
 import {
@@ -33,7 +33,7 @@ Amplify.configure(awsExports);
 function App() {
   const initialFormState = {
     name: "",
-    content: "",
+    productReview: "",
     productRating: 0.0,
     reviewRating: 0.0,
     userID: "",
@@ -145,10 +145,10 @@ function App() {
                               onChange={(e) =>
                                 setFormData({
                                   ...formData,
-                                  content: e.target.value,
+                                  productReview: e.target.value,
                                 })
                               }
-                              value={formData.content}
+                              value={formData.productReview}
                             />
                             <Form.Text className="text-muted">
                               Enter item review
