@@ -126,7 +126,7 @@ function App() {
                             </Row>
                           </Card>
                           <Form.Group>
-                            <Row>
+                            <Row className="align-items-center">
                               <Col xs="auto">
                                 <Form.Label>Rating</Form.Label>
                               </Col>
