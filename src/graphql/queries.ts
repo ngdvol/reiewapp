@@ -22,7 +22,6 @@ export const searchReviews = /* GraphQL */ `
       items {
         id
         userID
-        description
         productRating
         reviewRating
         productReview
@@ -53,7 +52,6 @@ export const getReview = /* GraphQL */ `
     getReview(id: $id) {
       id
       userID
-      description
       productRating
       reviewRating
       productReview
@@ -72,7 +70,6 @@ export const listReviews = /* GraphQL */ `
       items {
         id
         userID
-        description
         productRating
         reviewRating
         productReview

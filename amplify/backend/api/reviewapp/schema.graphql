@@ -6,7 +6,6 @@ input AMPLIFY {
 type Review @model @searchable {
   id: ID!
   userID: String!
-  description: String!
   productRating: Float!
   reviewRating: Float!
   productReview: String!

@@ -3,7 +3,6 @@ import logo from "./logo.svg";
 //import './App.css';
 //import "@aws-amplify/ui-react/styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "font-awesome/css/font-awesome.min.css";
 import { Rating } from "react-simple-star-rating";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
@@ -32,11 +31,10 @@ Amplify.configure(awsExports);
 
 function App() {
   const initialFormState = {
-    name: "",
-    productReview: "",
+    productReview: "a",
     productRating: 0.0,
     reviewRating: 0.0,
-    userID: "",
+    userID: "anloc",
   };
   const [Reviews, setReviews] = useState<any[]>([]);
   const [formData, setFormData] = useState(initialFormState);
@@ -60,10 +58,15 @@ function App() {
     //   !formData.isOpen
     // )
     //   return;
-    await API.graphql({
-      query: createReviewMutation,
-      variables: { input: formData },
-    });
+    try {
+      await API.graphql({
+        query: createReviewMutation,
+        variables: { input: formData },
+      });
+    } catch (e) {
+      console.error(e);
+    }
+
     setReviews([...Reviews, formData]);
     setFormData(initialFormState);
   }
@@ -131,7 +134,16 @@ function App() {
                                 <Form.Label>Rating</Form.Label>
                               </Col>
                               <Col>
-                                <Rating ratingValue={3} allowHalfIcon={true} />
+                                <Rating
+                                  onClick={(rate: number) =>
+                                    setFormData({
+                                      ...formData,
+                                      productRating: rate,
+                                    })
+                                  }
+                                  ratingValue={formData.productRating}
+                                  allowHalfIcon={true}
+                                />
                               </Col>
                             </Row>
                           </Form.Group>
@@ -163,9 +175,58 @@ function App() {
                               onClick={createReview}
                             >
                               Submit
-                            </Button>{" "}
+                            </Button>
                           </Form.Group>
                         </Form>
+                      </Card>
+                    </Card>
+
+                    <Card>
+                      <Card.Header as="h5">Reviews</Card.Header>
+                      <Card body>
+                        <div style={{ marginTop: 15, marginBottom: 30 }}>
+                          <Card.Subtitle className="mb-2 text-muted">
+                            Product reviews{" "}
+                          </Card.Subtitle>
+                          <Row className="g-2 mt-4">
+                            {Reviews.map((Review) => (
+                              <Col>
+                                <Card
+                                  key={Review.id}
+                                  style={{ width: "18rem" }}
+                                >
+                                  {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
+                                  <Card.Header>{Review.userID}</Card.Header>
+                                  <Card.Body>
+                                    {/* <Card.Title>{Request.name}</Card.Title> */}
+                                    <Card.Text>
+                                      {Review.productReview}
+                                    </Card.Text>
+                                    <Card.Text>
+                                      <Rating
+                                        ratingValue={Review.productRating}
+                                        initialValue={Review.productRating}
+                                        allowHalfIcon={true}
+                                        allowHover={false}
+                                      />
+                                    </Card.Text>
+                                    <Row>
+                                      <Button
+                                        onClick={() => deleteReview(Review)}
+                                        variant="primary"
+                                      >
+                                        Delete review
+                                      </Button>
+                                    </Row>
+                                  </Card.Body>
+                                  <Card.Footer className="text-muted">
+                                    2 days ago
+                                  </Card.Footer>
+                                </Card>
+                              </Col>
+                            ))}
+                          </Row>
+                        </div>
                       </Card>
                     </Card>
 

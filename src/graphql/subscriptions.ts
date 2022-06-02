@@ -7,7 +7,6 @@ export const onCreateReview = /* GraphQL */ `
     onCreateReview {
       id
       userID
-      description
       productRating
       reviewRating
       productReview
@@ -21,7 +20,6 @@ export const onUpdateReview = /* GraphQL */ `
     onUpdateReview {
       id
       userID
-      description
       productRating
       reviewRating
       productReview
@@ -35,7 +33,6 @@ export const onDeleteReview = /* GraphQL */ `
     onDeleteReview {
       id
       userID
-      description
       productRating
       reviewRating
       productReview

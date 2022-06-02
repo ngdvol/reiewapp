@@ -10,7 +10,6 @@ export const createReview = /* GraphQL */ `
     createReview(input: $input, condition: $condition) {
       id
       userID
-      description
       productRating
       reviewRating
       productReview
@@ -27,7 +26,6 @@ export const updateReview = /* GraphQL */ `
     updateReview(input: $input, condition: $condition) {
       id
       userID
-      description
       productRating
       reviewRating
       productReview
@@ -44,7 +42,6 @@ export const deleteReview = /* GraphQL */ `
     deleteReview(input: $input, condition: $condition) {
       id
       userID
-      description
       productRating
       reviewRating
       productReview
